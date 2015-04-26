@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "SocketThread.h"
+#include "ParseTransfer.h"
 
 CSocketThread::CSocketThread(void)
 	: CMyThread(NULL)
@@ -24,15 +25,17 @@ UINT CSocketThread::Run()
 	// AddrLen  must be the length of SOCKADDR_IN
 	int AddrLen = sizeof(SOCKADDR_IN);
 	
-	SOCKET newSocket = accept(ServerSocket, (SOCKADDR*)&ClientAddr, &AddrLen);
-
 	static char buf[MAX_PATH] = "\0";
-	while (TRUE)
+	while (SOCKET newSocket = accept(ServerSocket, (SOCKADDR*)&ClientAddr, &AddrLen))
 	{
 		//m_pHandler->Post(buf);
-		recv(newSocket, buf, MAX_PATH, 0);
-		if (strlen(buf) > 0) {
-			TRACE(buf);
+		while (recv(newSocket, buf, MAX_PATH, 0)) {
+			if (strlen(buf) > 0) {
+				TCHAR szBuf[MAX_PATH] = _T("\0");
+				MultiByteToWideChar(CP_UTF8, 0, buf, MAX_PATH, szBuf, MAX_PATH);
+				HandleSocket((LPCTSTR)szBuf);
+				strcpy_s(buf, "\0");
+			}
 		}
 	}
 
@@ -53,4 +56,10 @@ void CSocketThread::InitSocket()
 		return;
 	}
 	listen(ServerSocket, 5);
+}
+
+void CSocketThread::HandleSocket(CString strBuf)
+{
+	CParseTransfer Parse;
+	Parse.PraseTransfer(strBuf);
 }

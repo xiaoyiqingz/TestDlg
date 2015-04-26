@@ -113,6 +113,7 @@ BEGIN_MESSAGE_MAP(CTestDlgDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON10, &CTestDlgDlg::OnBnClickedButton10)
 	ON_MESSAGE(WM_HANDLER, OnMessageHandler)
 	ON_BN_CLICKED(IDC_BUTTON11, &CTestDlgDlg::OnBnClickedButton11)
+	ON_BN_CLICKED(IDC_BUTTON12, &CTestDlgDlg::OnBnClickedButton12)
 END_MESSAGE_MAP()
 
 
@@ -464,6 +465,8 @@ static void PrintMACaddress(unsigned char MACData[])
 		MACData[0], MACData[1], MACData[2], MACData[3], MACData[4], MACData[5]);
 }
 
+#include <string>
+
 void CTestDlgDlg::OnBnClickedButton11()
 {
 	int nCharset = GetTextCharset(GetDC()->GetSafeHdc());
@@ -481,4 +484,16 @@ void CTestDlgDlg::OnBnClickedButton11()
 		PrintMACaddress(pAdapterInfo->Address);
 		pAdapterInfo = pAdapterInfo->Next;
 	} while (pAdapterInfo);
+}
+
+
+void CTestDlgDlg::OnBnClickedButton12()
+{
+	CWnd* pWnd = FindWindow(NULL, _T("UserAccount"));
+	if (pWnd != NULL) {
+		CWnd* pChild = FindWindowEx(pWnd->GetSafeHwnd(), NULL, NULL, _T("close"));
+		
+		int nID = pChild->GetDlgCtrlID();
+		pWnd->PostMessage(WM_COMMAND, MAKEWPARAM(nID, BN_CLICKED), NULL);
+	}
 }

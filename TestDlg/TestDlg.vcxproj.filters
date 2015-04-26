@@ -57,6 +57,9 @@
     <ClInclude Include="UserMsg.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="ParseTransfer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestDlg.cpp">
@@ -79,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="Help\InerWorker.cpp">
       <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="ParseTransfer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

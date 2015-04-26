@@ -9,6 +9,7 @@ public:
 
 	virtual UINT Run();
 	void InitSocket();
+	void HandleSocket(CString strBuf);
 
 private: 
 	SOCKET	ServerSocket;
