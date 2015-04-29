@@ -115,11 +115,8 @@ BEGIN_MESSAGE_MAP(CTestDlgDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON10, &CTestDlgDlg::OnBnClickedButton10)
 	ON_MESSAGE(WM_HANDLER, OnMessageHandler)
 	ON_BN_CLICKED(IDC_BUTTON11, &CTestDlgDlg::OnBnClickedButton11)
-<<<<<<< Updated upstream
 	ON_BN_CLICKED(IDC_BUTTON12, &CTestDlgDlg::OnBnClickedButton12)
-=======
 	ON_BN_CLICKED(IDC_BT_SOCKET, &CTestDlgDlg::OnBnClickedBtSocket)
->>>>>>> Stashed changes
 END_MESSAGE_MAP()
 
 
@@ -491,8 +488,6 @@ void CTestDlgDlg::OnBnClickedButton11()
 		pAdapterInfo = pAdapterInfo->Next;
 	} while (pAdapterInfo);
 }
-<<<<<<< Updated upstream
-
 
 void CTestDlgDlg::OnBnClickedButton12()
 {
@@ -504,12 +499,9 @@ void CTestDlgDlg::OnBnClickedButton12()
 		pWnd->PostMessage(WM_COMMAND, MAKEWPARAM(nID, BN_CLICKED), NULL);
 	}
 }
-=======
-
 
 void CTestDlgDlg::OnBnClickedBtSocket()
 {
 	CSocketDlg dlg;
 	dlg.DoModal();
 }
->>>>>>> Stashed changes
