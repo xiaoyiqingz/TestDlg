@@ -69,5 +69,9 @@ public:
 	afx_msg void OnBnClickedButton10();
 	afx_msg LRESULT OnMessageHandler(WPARAM wParam, LPARAM lParam);
 	afx_msg void OnBnClickedButton11();
+<<<<<<< Updated upstream
 	afx_msg void OnBnClickedButton12();
+=======
+	afx_msg void OnBnClickedBtSocket();
+>>>>>>> Stashed changes
 };
